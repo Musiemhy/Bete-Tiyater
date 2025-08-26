@@ -1,5 +1,7 @@
 import { icons } from '@/constants/icons'
 import { images } from '@/constants/images'
+import { useTheme } from '@/context/ThemeContext'
+
 import { Tabs } from 'expo-router'
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native'
 
@@ -22,6 +24,8 @@ const TabIcon = ({ focused, icon, title }: any) => {
 }
 
 const _layout = () => {
+  const { isDarkMode } = useTheme();
+
   return (
       <Tabs
         screenOptions={{
@@ -33,7 +37,7 @@ const _layout = () => {
                 alignItems: "center",
             },
             tabBarStyle: {
-                backgroundColor: "#0F0D23",
+                backgroundColor: isDarkMode ? '#1E1E1E' : '#F0F0F0',
                 borderRadius: 50,
                 marginHorizontal: 20,
                 marginBottom: 36,
@@ -41,7 +45,7 @@ const _layout = () => {
                 position: "absolute",
                 overflow: "hidden",
                 borderWidth: 1,
-                borderColor: "#0F0D23",
+                borderColor: isDarkMode ? '#333333' : '#CCCCCC',
             },
         }}
       >
